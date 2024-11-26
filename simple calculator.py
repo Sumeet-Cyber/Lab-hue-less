@@ -24,7 +24,7 @@ def button_clear():
 def output():
     expression = text_input_field.get()
     text_input_field.delete(0, END)
-    for operator in ('+', '-', '*', '/'):
+    for operator in ('+', '-', '*', '/','%'):
         if (operator in expression):
             two_exp = expression.split(operator)
             print(two_exp)
@@ -40,9 +40,11 @@ def calculator(n1,n2, operator):
         return n1 * n2
     elif operator == '/':
         return n1 / n2
+    elif operator == '%':
+        return n1 % n2
     
 # ------------------------------------------------------
-# button section, button)selction is a widget which is parent to all buttons, and child of root.
+# button section, button selction is a widget which is parent to all buttons, and child of root.
 
 button_section = Label(root, bg="#c0e2e0", width=40, border=15)
 button_section.grid(row=2, column=1)
@@ -81,6 +83,9 @@ b9.grid(row=3, column=3)
 b0 = Button(button_section, text="0", padx=px, pady=py, width=w, height=h, command=lambda: button_click("0"))
 b0.grid(row=4, column=2)
 
+b_dot = Button(button_section, text=".", padx=px, pady=py, width=w, height=h, command=lambda: button_click("."))
+b_dot.grid(row=5, column=2)
+
 # function buttons-
 
 b_add = Button(button_section, text="+", padx=px, pady=py, width=w, height=h, command=lambda: button_click("+"))
@@ -94,6 +99,9 @@ b_mul.grid(row=3, column=4)
 
 b_div = Button(button_section, text="/", padx=px, pady=py, width=w, height=h, command=lambda: button_click("/"))
 b_div.grid(row=4, column=4)
+
+b_mod = Button(button_section, text="%", padx=px, pady=py, width=w, height=h, command=lambda: button_click("%"))
+b_mod.grid(row=5, column=4)
 
 b_equ = Button(button_section, text="=", padx=px, pady=py, width=w, height=h, command=output)
 b_equ.grid(row=4, column=3)
